@@ -7,6 +7,6 @@ nnoremap <C-u> <C-u>zz
 
 nnoremap <leader>d "_d
 
-nnoremap <leader>% vatdp
+nnoremap <leader>w <leader><leader>w
 
 
