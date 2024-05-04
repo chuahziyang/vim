@@ -1,4 +1,4 @@
--- This file  needs to have same structure as nvconfig.lua 
+-- This file  needs to have same structure as nvconfig.lua
 -- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua
 
 ---@type ChadrcConfig
@@ -12,5 +12,8 @@ M.ui = {
 	-- 	["@comment"] = { italic = true },
 	-- },
 }
+-- M.plugins = "plugins"
 
 return M
+
+
