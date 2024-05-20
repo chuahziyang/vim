@@ -108,6 +108,7 @@ set clipboard=unnamedplus
 " nnoremap <leader>{ <S-v>$%
 nnoremap <leader>{ va{V
 nnoremap <leader>[ va[V
+nnoremap <leader>p "0p
 " nnoremap <C-d> zz
 " xnoremap <C-d> <C-u>zz
 " nnoremap <C-u> <C-d>zz
