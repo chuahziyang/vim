@@ -9,6 +9,11 @@ function! s:manageEditorSize(...)
     endfor
 endfunction
 
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank { higroup='StatusLineNC', timeout=100 }
+augroup END
+
 function! s:vscodeCommentary(...) abort
     if !a:0
         let &operatorfunc = matchstr(expand('<sfile>'), '[^. ]*$')
