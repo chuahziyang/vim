@@ -13,6 +13,7 @@ end ]]
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+
     {
     "kylechui/nvim-surround",
     version = "*", -- Use for stability; omit to use `main` branch for the latest features
@@ -25,9 +26,14 @@ require("lazy").setup({
     },
 
     {
-      "gbprod/substitute.nvim",
-      opts = {},
+      "gwbprod/substitute.nvim",
+      opts = {
+        highlight_substituted_text = {
+          enabled = false,
+        },
+      },
       config = function()
+        require('substitute').setup({})
         vim.keymap.set("n", "gs", require('substitute').operator, { noremap = true })
         vim.keymap.set("n", "gss", require('substitute').line, { noremap = true })
         vim.keymap.set("n", "gS", require('substitute').eol, { noremap = true })
@@ -47,7 +53,17 @@ require("lazy").setup({
         { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
         { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
       },
+    },
+
+    {
+      'echasnovski/mini.ai',
+      version = false,
+      opts = {},
+      config = function()
+        require('mini.ai').setup({})
+      end,
     }
+
 
   --   {
   --   "ggandor/leap.nvim",
