@@ -109,8 +109,6 @@ nmap <S-Tab> :Tabprev<CR>
 
 set clipboard=unnamedplus
 
-xnoremap <Tab> :norm i    <CR>
-xnoremap <S-Tab> :norm cw<CR>
 nnoremap <leader>{ $va{V
 nnoremap <leader>[ $va[V
 nnoremap <leader>p "0p
