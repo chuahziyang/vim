@@ -68,6 +68,15 @@ return {
       require('mini.ai').setup({})
     end,
   },
+  {
+    "baliestri/aura-theme",
+    lazy = false,
+    priority = 1000,
+    config = function(plugin)
+      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+      vim.cmd([[colorscheme aura-dark]])
+    end
+  }
 
   -- These are some examples, uncomment them if you want to see them work!
   -- {

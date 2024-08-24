@@ -1,4 +1,7 @@
 -- Function to open VSCode commands in visual mode
+
+vim.g.mapleader = ","
+
 local function open_vscode_commands_in_visual_mode()
     vim.cmd('normal! gv')
     local mode = vim.fn.visualmode()

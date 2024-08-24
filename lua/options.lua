@@ -5,3 +5,4 @@ require "nvchad.options"
 -- local o = vim.o
 -- o.cursorlineopt ='both' -- to enable cursorline!
 vim.o.clipboard = "unnamedplus"
+vim.o.relativenumber = true
