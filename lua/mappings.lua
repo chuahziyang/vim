@@ -27,11 +27,15 @@ map('n', '<leader>w', ':w<CR>', { noremap = true })
 map('n', '<leader>q', ':x<CR>', { noremap = true })
 
 -- Terminal
-map('t', '<leader>x', '<C-\\><C-n>', { noremap = true })
-map('n', '<C-t>', function()
+-- map('t', '<C-x>', '<C-\\><C-n>', { noremap = true })
+
+map({'n', 't'}, '<C-t>', function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "Terminal Toggle Floating term" })
 
+map({'n', 't'}, '<leader>tf', function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end, { desc = "Terminal Toggle Floating term" })
 
 -- AutoCommands
 vim.api.nvim_create_autocmd('TextYankPost', {
