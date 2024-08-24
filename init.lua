@@ -37,3 +37,11 @@ require "nvchad.autocmds"
 vim.schedule(function()
   require "mappings"
 end)
+
+
+if vim.g.vscode then
+  require("vsc.settings")
+else
+  -- ordinary Neovim
+end
+
