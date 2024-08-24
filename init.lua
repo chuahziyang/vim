@@ -91,10 +91,9 @@ require("lazy").setup({
   --   }
 })
 
-local userprofile = os.getenv("USERPROFILE")
 if vim.g.vscode then
   vim.g.mapleader = ","
-  vim.cmd("source " .. userprofile .. "\\AppData\\Local\\nvim\\vscode\\settings.vim")
+  require("vs.settings")
 else
   -- ordinary Neovim
 end
