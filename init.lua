@@ -92,7 +92,6 @@ require("lazy").setup({
 })
 
 if vim.g.vscode then
-  vim.g.mapleader = ","
   require("vs.settings")
 else
   -- ordinary Neovim
