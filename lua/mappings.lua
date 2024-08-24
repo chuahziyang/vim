@@ -19,13 +19,24 @@ map('n', '<leader>{', '$va{V', { noremap = true })
 map('n', '<leader>[', '$va[V', { noremap = true })
 map('n', '<leader>p', '"0p', { noremap = true })
 map('n', '<leader>d', '"_d', { noremap = true })
+
+-- Git Integrations
+
+map('n', '<leader>gs', ':!git add -u<CR><CR>', { noremap = true })
+map('n', '<leader>gc', ':Git commit<CR>', { noremap = true })
+
+
+
 -- map('n', '<leader>s', ':w<CR>', { noremap = true })
 -- map('n', '<leader>q', ':x<CR>', { noremap = true })
+
+map('n', '<C-d>', '<C-d>zz', { noremap = true })
+map('n', '<C-u>', '<C-u>zz', { noremap = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
-        vim.highlight.on_yank({ higroup = 'StatusLineNC', timeout = 100 })
+        vim.highlight.on_yank({ higroup = 'StatusLineNC', timeout = 200 })
     end,
     group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
 })

@@ -76,7 +76,24 @@ return {
       vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
       vim.cmd([[colorscheme aura-dark]])
     end
+  },
+
+  {
+    'rmagatti/auto-session',
+    lazy = false,
+    dependencies = {
+      'nvim-telescope/telescope.nvim', -- Only needed if you want to use session lens
+    },
+    opts = {
+      -- log_level = 'debug',
+    }
+  },
+
+  {
+    'tpope/vim-fugitive',
+    lazy = false,
   }
+
 
   -- These are some examples, uncomment them if you want to see them work!
   -- {
