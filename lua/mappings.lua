@@ -13,16 +13,14 @@ local map = vim.keymap.set
 vim.keymap.del('n', '<leader>ma')
 vim.keymap.del('n', '<leader>n')
 vim.keymap.del('n', '<leader>th')
-vim.keymap.del('n', '<leader>sh')
-vim.keymap.del('n', '<leader>rn')
 
 
 map('n', '<leader>{', '$va{V', { noremap = true })
 map('n', '<leader>[', '$va[V', { noremap = true })
 map('n', '<leader>p', '"0p', { noremap = true })
 map('n', '<leader>d', '"_d', { noremap = true })
-map('n', '<leader>s', ':w<CR>', { noremap = true })
-map('n', '<leader>q', ':x<CR>', { noremap = true })
+-- map('n', '<leader>s', ':w<CR>', { noremap = true })
+-- map('n', '<leader>q', ':x<CR>', { noremap = true })
 
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
