@@ -92,7 +92,18 @@ return {
   {
     'tpope/vim-fugitive',
     lazy = false,
-  }
+  },
+
+  -- {
+  --   'nvimdev/dashboard-nvim',
+  --   event = 'VimEnter',
+  --   config = function()
+  --     require('dashboard').setup {
+  --       -- config
+  --     }
+  --   end,
+  --   dependencies = { {'nvim-tree/nvim-web-devicons'}}
+  -- }
 
 
   -- These are some examples, uncomment them if you want to see them work!

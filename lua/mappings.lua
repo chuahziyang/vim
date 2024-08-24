@@ -4,35 +4,36 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
--- map("n", ";", ":", { desc = "CMD enter command mode" })
--- map("i", "jk", "<ESC>")
---
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
---
-
+-- Delete Keymaps
 vim.keymap.del('n', '<leader>ma')
 vim.keymap.del('n', '<leader>n')
 vim.keymap.del('n', '<leader>th')
 
-
+-- Code Navigations
 map('n', '<leader>{', '$va{V', { noremap = true })
 map('n', '<leader>[', '$va[V', { noremap = true })
 map('n', '<leader>p', '"0p', { noremap = true })
 map('n', '<leader>d', '"_d', { noremap = true })
+map('n', '<C-d>', '<C-d>zz', { noremap = true })
+map('n', '<C-u>', '<C-u>zz', { noremap = true })
 
 -- Git Integrations
-
 map('n', '<leader>gs', ':!git add -u<CR><CR>', { noremap = true })
 map('n', '<leader>gc', ':Git commit<CR>', { noremap = true })
 
 
+-- Buffer Navigations
+map('n', '<leader>w', ':w<CR>', { noremap = true })
+map('n', '<leader>q', ':x<CR>', { noremap = true })
 
--- map('n', '<leader>s', ':w<CR>', { noremap = true })
--- map('n', '<leader>q', ':x<CR>', { noremap = true })
+-- Terminal
+map('t', '<leader>x', '<C-\\><C-n>', { noremap = true })
+map('n', '<C-t>', function()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end, { desc = "Terminal Toggle Floating term" })
 
-map('n', '<C-d>', '<C-d>zz', { noremap = true })
-map('n', '<C-u>', '<C-u>zz', { noremap = true })
 
+-- AutoCommands
 vim.api.nvim_create_autocmd('TextYankPost', {
     pattern = '*',
     callback = function()
