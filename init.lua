@@ -40,7 +40,7 @@ end)
 
 
 if vim.g.vscode then
-  require("vsc.settings")
+  require("vs.settings")
 else
   -- ordinary Neovim
 end
