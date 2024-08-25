@@ -23,8 +23,8 @@ map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
 
 -- Git Integrations
-map('n', '<leader>gs', ':!git add -A<CR><CR>', { noremap = true })
-map('n', '<leader>gc', ':Git commit<CR>', { noremap = true })
+map('n', '<leader>gs', ':!git add -A<CR><CR>', { noremap = true, desc = "Stage All Files"})
+map('n', '<leader>gc', ':Git commit<CR>', { noremap = true,desc = "Commit Changes"})
 
 
 -- Buffer Navigations
