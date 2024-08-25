@@ -30,11 +30,8 @@ map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
 
 
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-map({'n', 't'}, '<C-t>', function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
-end, { desc = "Terminal Toggle Floating term" })
 
-map({'n', 't'}, '<leader>tf', function()
+map({'n', 't'}, {'<C-t>','<leader>tf'} , function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "Terminal Toggle Floating term" })
 
