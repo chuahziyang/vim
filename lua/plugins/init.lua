@@ -1,217 +1,41 @@
-return {
-  {
-    "stevearc/conform.nvim",
-    event = 'BufWritePre', -- uncomment for format on save
-    config = function()
-      require "configs.conform"
-    end,
-  },
 
-  {
-    "nvim-tree/nvim-tree.lua",
-    config = function()
-      -- Load the default settings
-      local default_options = require("nvchad.configs.nvimtree")
-      -- Custom settings to override defaults
-      local custom_options = {
-        view = {
-          side = "right"
-        }
-      }
-      -- Merge default and custom options
-      local final_options = vim.tbl_deep_extend("force", default_options, custom_options)
-      -- Apply the merged configuration
-      require("nvim-tree").setup(final_options)
-    end,
-  },
+local M = {}
 
-
-  {
-  "kylechui/nvim-surround",
-  version = "*", -- Use for stability; omit to use `main` branch for the latest features
-  event = "VeryLazy",
-  config = function()
-      require("nvim-surround").setup({
-          keymaps = {
-              insert = "<C-g>o",
-              insert_line = "<C-g>O",
-              normal = "yo",
-              normal_cur = "yoo",
-              normal_line = "yO",
-              normal_cur_line = "yOO",
-              visual = "O",
-              visual_line = "gO",
-              delete = "do",
-              change = "co",
-              change_line = "cO",
-          },
-      })
-  end,
-  },
-
-  {
-    "gbprod/substitute.nvim",
-    opts = {
-      highlight_substituted_text = {
-        enabled = false,
-      },
-    },
-    config = function()
-      require('substitute').setup({})
-      vim.keymap.set("n", "gs", require('substitute').operator, { noremap = true })
-      vim.keymap.set("n", "gss", require('substitute').line, { noremap = true })
-      vim.keymap.set("n", "gS", require('substitute').eol, { noremap = true })
-      vim.keymap.set("x", "gx", require('substitute').visual, { noremap = true })
-    end,
-  },
-
-  {
-    "folke/flash.nvim",
-    event = "VeryLazy",
-    ---@type Flash.Config
-    opts = {},
-    keys = {
-      { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
-      { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
-      { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
-      { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-      { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
-    },
-  },
-
-  {
-    'echasnovski/mini.ai',
-    version = false,
-    opts = {},
-    config = function()
-      require('mini.ai').setup({})
-    end,
-  },
-  {
-    "baliestri/aura-theme",
-    lazy = false,
-    priority = 1000,
-    config = function(plugin)
-      vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
-      vim.cmd([[colorscheme aura-dark]])
+local function load_plugins_from_directory(directory)
+  local plugins = {}
+  local function is_lua_file(filename)
+    return filename:match("%.lua$")
+  end
+  local function require_plugin_file(filename)
+    local plugin_name = filename:match("(.+)%..+$") -- Remove extension
+    local ok, config = pcall(require, "plugins." .. plugin_name)
+    if ok then
+      vim.list_extend(plugins, config)
+    else
+      print("Failed to load plugin file: " .. filename)
     end
-  },
+  end
+  local function list_files(dir)
+    local files = {}
+    local pfile = io.popen('ls "' .. dir .. '"') -- Use 'ls' command to list files
+    for filename in pfile:lines() do
+      table.insert(files, filename)
+    end
+    pfile:close()
+    return files
+  end
 
-  {
-    'rmagatti/auto-session',
-    lazy = false,
-    dependencies = {
-      'nvim-telescope/telescope.nvim', -- Only needed if you want to use session lens
-    },
-    opts = {
-      -- log_level = 'debug',
-    }
-  },
+  local files = list_files(directory)
+  for _, filename in ipairs(files) do
+    if is_lua_file(filename) then
+      require_plugin_file(filename)
+    end
+  end
 
-  -- {
-  --   "coffebar/neovim-project",
-  --   opts = {
-  --     projects = { -- define project roots
-  --       "~/projects/*",
-  --       "~/.config/*",
-  --     },
-  --   },
-  --   init = function()
-  --     -- enable saving the state of plugins in the session
-  --     vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
-  --   end,
-  --   dependencies = {
-  --     { "nvim-lua/plenary.nvim" },
-  --     { "nvim-telescope/telescope.nvim", tag = "0.1.4" },
-  --     { "Shatur/neovim-session-manager" },
-  --   },
-  --   lazy = false,
-  --   priority = 100,
-  -- },
+  return plugins
+end
 
-  {
-    'tpope/vim-fugitive',
-    lazy = false,
-  },
+M.plugins = load_plugins_from_directory(vim.fn.stdpath('config') .. '/lua/plugins')
 
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*",  -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-    -- event = {
-    --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/*.md"
-    --   -- refer to `:h file-pattern` for more examples
-    --   "BufReadPre path/to/my-vault/*.md",
-    --   "BufNewFile path/to/my-vault/*.md",
-    -- },
-    dependencies = {
-      -- Required.
-      "nvim-lua/plenary.nvim",
+return M.plugins
 
-      -- see below for full list of optional dependencies 👇
-    },
-    opts = {
-      workspaces = {
-        {
-          name = "Obsidian Vault",
-          path = "~/Documents/Obsidian Vault/",
-        },
-      },
-
-      -- see below for full list of options 👇
-    },
-  }
-
-  -- { 'glacambre/firenvim', build = ":call firenvim#install(0)" }
-
-  -- {
-  --   'nvimdev/dashboard-nvim',
-  --   event = 'VimEnter',
-  --   config = function()
-  --     require('dashboard').setup {
-  --       -- config
-  --     }
-  --   end,
-  --   dependencies = { {'nvim-tree/nvim-web-devicons'}}
-  -- }
-
-
-  -- These are some examples, uncomment them if you want to see them work!
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   config = function()
-  --     require("nvchad.configs.lspconfig").defaults()
-  --     require "configs.lspconfig"
-  --   end,
-  -- },
-  -- --
-  -- {
-  -- 	"williamboman/mason.nvim",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  --       "typescript-language-server",
-  --       "tailwindcss-language-server",
-  --       "eslint-lsp",
-  --       "prettierd"
-  -- 		},
-  -- 	},
-  -- },
-  -- --
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = function()
-  --     opts = require("nvchad.configs.treesitter")
-  --     opts.ensure_installed ={
-  --       "lua",
-  --       "typescript",
-  --       "javascript",
-  --       "tsx"
-  --     }
-  --     return opts
-
-  --   end
-  -- },
-}
