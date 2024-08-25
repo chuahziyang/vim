@@ -4,6 +4,10 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+local function toggle_floating_term()
+  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+end
+
 -- Delete Keymaps
 vim.keymap.del('n', '<leader>ma')
 vim.keymap.del('n', '<leader>n')
@@ -28,12 +32,10 @@ map('n', '<leader>w', ':w<CR>', { noremap = true })
 map('n', '<leader>q', ':x<CR>', { noremap = true })
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
 
-
+-- Terminal Navigations
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-
-map({'n', 't'}, {'<C-t>','<leader>tf'} , function()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
-end, { desc = "Terminal Toggle Floating term" })
+map({'n', 't'}, '<C-t>', toggle_floating_term, { desc = "Terminal Toggle Floating term" })
+map({'n', 't'}, '<leader>tf', toggle_floating_term, { desc = "Terminal Toggle Floating term" })
 
 -- AutoCommands
 vim.api.nvim_create_autocmd('TextYankPost', {
@@ -43,4 +45,5 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     end,
     group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
 })
+
 
