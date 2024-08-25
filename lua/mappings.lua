@@ -8,6 +8,7 @@ local map = vim.keymap.set
 vim.keymap.del('n', '<leader>ma')
 vim.keymap.del('n', '<leader>n')
 vim.keymap.del('n', '<leader>th')
+vim.keymap.del('n', '<leader>e')
 
 -- Code Navigations
 map('n', '<leader>{', '$va{V', { noremap = true })
@@ -25,10 +26,10 @@ map('n', '<leader>gc', ':Git commit<CR>', { noremap = true })
 -- Buffer Navigations
 map('n', '<leader>w', ':w<CR>', { noremap = true })
 map('n', '<leader>q', ':x<CR>', { noremap = true })
+map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
 
--- Terminal
--- map('t', '<C-x>', '<C-\\><C-n>', { noremap = true })
 
+map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 map({'n', 't'}, '<C-t>', function()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end, { desc = "Terminal Toggle Floating term" })
