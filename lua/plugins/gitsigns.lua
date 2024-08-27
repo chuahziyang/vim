@@ -1,5 +1,5 @@
 return {
-  {
+ {
     "lewis6991/gitsigns.nvim",
     config = function()
       -- Load the default settings
