@@ -14,11 +14,8 @@ vim.keymap.del('n', '<leader>n')
 vim.keymap.del('n', '<leader>th')
 vim.keymap.del('n', '<leader>e')
 vim.keymap.del('n', '<leader>ds')
--- vim.keymap.del('n', '<leader>wk')
--- vim.keymap.del('n', '<leader>wK')
--- vim.keymap.del('n', '<leader>wa')
--- vim.keymap.del('n', '<leader>wl')
--- vim.keymap.del('n', '<leader>wr')
+vim.keymap.del('n', '<leader>wk')
+vim.keymap.del('n', '<leader>wK')
 
 -- Code Navigations
 map('n', '<leader>{', '$va{V', { noremap = true })
@@ -51,6 +48,25 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
   group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
 })
+
+local function opts(desc)
+  return { buffer = bufnr, desc = "LSP " .. desc }
+end
+
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   group = vim.api.nvim_create_augroup('LspConfig', { clear = true }),
+--
+--
+--   callback = function()
+--     vim.keymap.del('n', '<leader>wk')
+--     vim.keymap.del('n', '<leader>wK')
+--     vim.keymap.del('n', '<leader>wa', opts "Add workspace folder")
+--     vim.keymap.del('n', '<leader>wr', opts "Remove workspace folder")
+--     vim.keymap.del('n', '<leader>wl', opts "List workspace folders")
+--   end,
+-- })
+--
+
 
 
 vim.keymap.del('n', '<C-h>')

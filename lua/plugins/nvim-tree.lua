@@ -8,7 +8,12 @@ return {
       local custom_options = {
         view = {
           side = "right"
-        }
+        },
+        git = {
+          enable = true,
+          ignore = false,
+          timeout = 500,
+        },
       }
       -- Merge default and custom options
       local final_options = vim.tbl_deep_extend("force", default_options, custom_options)
