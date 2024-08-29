@@ -49,10 +49,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
 })
 
-local function opts(desc)
-  return { buffer = bufnr, desc = "LSP " .. desc }
-end
-
 -- vim.api.nvim_create_autocmd("LspAttach", {
 --   group = vim.api.nvim_create_augroup('LspConfig', { clear = true }),
 --
