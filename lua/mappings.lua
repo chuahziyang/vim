@@ -3,19 +3,20 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
+local del = del
 
 local function toggle_floating_term()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end
 
 -- Delete Keymaps
-vim.keymap.del('n', '<leader>ma')
-vim.keymap.del('n', '<leader>n')
-vim.keymap.del('n', '<leader>th')
-vim.keymap.del('n', '<leader>e')
-vim.keymap.del('n', '<leader>ds')
-vim.keymap.del('n', '<leader>wk')
-vim.keymap.del('n', '<leader>wK')
+del('n', '<leader>ma')
+del('n', '<leader>n')
+del('n', '<leader>th')
+del('n', '<leader>e')
+del('n', '<leader>ds')
+del('n', '<leader>wk')
+del('n', '<leader>wK')
 
 -- Code Navigations
 map('n', '<leader>{', '$va{V', { noremap = true })
@@ -49,26 +50,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
 })
 
--- vim.api.nvim_create_autocmd("LspAttach", {
---   group = vim.api.nvim_create_augroup('LspConfig', { clear = true }),
---
---
---   callback = function()
---     vim.keymap.del('n', '<leader>wk')
---     vim.keymap.del('n', '<leader>wK')
---     vim.keymap.del('n', '<leader>wa', opts "Add workspace folder")
---     vim.keymap.del('n', '<leader>wr', opts "Remove workspace folder")
---     vim.keymap.del('n', '<leader>wl', opts "List workspace folders")
---   end,
--- })
---
+map("n", "<leader>j", "<cmd>bprev<CR>")
+map("n", "<leader>k", "<cmd>bnext<CR>")
 
-
-
-vim.keymap.del('n', '<C-h>')
-vim.keymap.del('n', '<C-j>')
-vim.keymap.del('n', '<C-k>')
-vim.keymap.del('n', '<C-l>')
+del('n', '<C-h>')
+del('n', '<C-j>')
+del('n', '<C-k>')
+del('n', '<C-l>')
 vim.keymap.set('n', '<C-h>', require('smart-splits').move_cursor_left)
 vim.keymap.set('n', '<C-j>', require('smart-splits').move_cursor_down)
 vim.keymap.set('n', '<C-k>', require('smart-splits').move_cursor_up)
