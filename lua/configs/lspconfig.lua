@@ -5,7 +5,7 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
-local servers = { "lua_ls", "html", "cssls", "tsserver", "tailwindcss", "eslint" }
+local servers = { "lua_ls", "html", "cssls", "tsserver", "tailwindcss", "eslint", "pylsp" }
 
 local function on_attach(client, bufnr)
   original_on_attach(client, bufnr)
