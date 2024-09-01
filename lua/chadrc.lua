@@ -5,15 +5,16 @@
 local M = {}
 
 M.ui = {
-	theme = "onedark",
+  theme = "material-darker",
 
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+  -- hl_override = {
+  -- 	Comment = { italic = true },
+  -- 	["@comment"] = { italic = true },
+  -- },
+}
+M.lsp = {
+  signature = false
 }
 -- M.plugins = "plugins"
 
 return M
-
-
