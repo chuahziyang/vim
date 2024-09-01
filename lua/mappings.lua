@@ -3,7 +3,7 @@ require "nvchad.mappings"
 -- add yours here
 
 local map = vim.keymap.set
-local del = del
+local del = vim.keymap.del
 
 local function toggle_floating_term()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
