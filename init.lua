@@ -49,9 +49,11 @@ if vim.g.started_by_firenvim == true then
   vim.g.firenvim_config = {
     localSettings = {
       ["."] = {
-        takeover = "never"
+        takeover = "never",
+        cmdline = "neovim"
       }
     }
   }
+  vim.opt.guifont = "Geist Mono:h10"
 else
 end
