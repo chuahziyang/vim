@@ -9,6 +9,21 @@ local function toggle_floating_term()
   require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
 end
 
+-- Define a wrapper function that calls move_buf with an argument
+local function move_buf(arg)
+  return function()
+    require("nvchad.tabufline").move_buf(arg)
+  end
+end
+
+-- Use the wrapper function in the key mapping
+vim.api.nvim_set_keymap(
+  'n',
+  '<leader><leader>k',
+  [[:lua require('nvchad.tabufline').move_buf(1)<CR>]],
+  { noremap = true, silent = true }
+)
+
 -- Delete Keymaps
 del('n', '<leader>ma')
 del('n', '<leader>n')
@@ -28,10 +43,10 @@ map('n', '<C-h>', require('smart-splits').move_cursor_left)
 map('n', '<C-j>', require('smart-splits').move_cursor_down)
 map('n', '<C-k>', require('smart-splits').move_cursor_up)
 map('n', '<C-l>', require('smart-splits').move_cursor_right)
-map('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
-map('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
-map('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
-map('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
+-- map('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
+-- map('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
+-- map('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
+-- map('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
 -- map('n', '<C-\\>', require('smart-splits').move_cursor_previous)
 
 -- Code Navigations
@@ -60,3 +75,5 @@ map({ 'n', 't' }, '<leader>tf', toggle_floating_term, { desc = "Terminal Toggle 
 
 map("n", "<leader>j", "<cmd>bprev<CR>")
 map("n", "<leader>k", "<cmd>bnext<CR>")
+map("n", "<leader><leader>j", move_buf(-1))
+map("n", "<leader><leader>k", move_buf(1))
