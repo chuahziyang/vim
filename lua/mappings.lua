@@ -17,6 +17,22 @@ del('n', '<leader>e')
 del('n', '<leader>ds')
 del('n', '<leader>wk')
 del('n', '<leader>wK')
+del('n', '<leader>b')
+
+-- Smart Splits
+del('n', '<C-h>')
+del('n', '<C-j>')
+del('n', '<C-k>')
+del('n', '<C-l>')
+map('n', '<C-h>', require('smart-splits').move_cursor_left)
+map('n', '<C-j>', require('smart-splits').move_cursor_down)
+map('n', '<C-k>', require('smart-splits').move_cursor_up)
+map('n', '<C-l>', require('smart-splits').move_cursor_right)
+map('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
+map('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
+map('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
+map('n', '<leader><leader>l', require('smart-splits').swap_buf_right)
+-- map('n', '<C-\\>', require('smart-splits').move_cursor_previous)
 
 -- Code Navigations
 map('n', '<leader>{', '$va{V', { noremap = true })
@@ -41,29 +57,6 @@ map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 map({ 'n', 't' }, '<C-t>', toggle_floating_term, { desc = "Terminal Toggle Floating term" })
 map({ 'n', 't' }, '<leader>tf', toggle_floating_term, { desc = "Terminal Toggle Floating term" })
 
--- AutoCommands
-vim.api.nvim_create_autocmd('TextYankPost', {
-  pattern = '*',
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'StatusLineNC', timeout = 200 })
-  end,
-  group = vim.api.nvim_create_augroup('highlight_yank', { clear = true }),
-})
 
 map("n", "<leader>j", "<cmd>bprev<CR>")
 map("n", "<leader>k", "<cmd>bnext<CR>")
-
-del('n', '<C-h>')
-del('n', '<C-j>')
-del('n', '<C-k>')
-del('n', '<C-l>')
-map('n', '<C-h>', require('smart-splits').move_cursor_left)
-map('n', '<C-j>', require('smart-splits').move_cursor_down)
-map('n', '<C-k>', require('smart-splits').move_cursor_up)
-map('n', '<C-l>', require('smart-splits').move_cursor_right)
-map('n', '<C-\\>', require('smart-splits').move_cursor_previous)
--- swapping buffers between windows
-map('n', '<leader><leader>h', require('smart-splits').swap_buf_left)
-map('n', '<leader><leader>j', require('smart-splits').swap_buf_down)
-map('n', '<leader><leader>k', require('smart-splits').swap_buf_up)
-map('n', '<leader><leader>l', require('smart-splits').swap_buf_right)

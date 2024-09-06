@@ -32,28 +32,11 @@ require("lazy").setup({
 dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
-require "nvchad.autocmds"
+require "autocmds"
 
 vim.schedule(function()
   require "mappings"
 end)
 
 
-if vim.g.vscode then
-  require("vs.settings")
-else
-  -- ordinary Neovim
-end
-
-if vim.g.started_by_firenvim == true then
-  vim.g.firenvim_config = {
-    localSettings = {
-      ["."] = {
-        takeover = "never",
-        cmdline = "neovim"
-      }
-    }
-  }
-  vim.opt.guifont = "Geist Mono:h10"
-else
-end
+require("platforms")
