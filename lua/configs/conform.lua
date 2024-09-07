@@ -4,6 +4,17 @@ local options = {
   --   -- css = { "prettier" },
   --   -- html = { "prettier" },
   -- },
+  formatters_by_ft = {
+    javascript = { { "prettierd", "prettier" } },
+    typescript = { { "prettierd", "prettier" } },
+    javascriptreact = { { "prettierd", "prettier" } },
+    typescriptreact = { { "prettierd", "prettier" } },
+    json = { { "prettierd", "prettier" } },
+    graphql = { { "prettierd", "prettier" } },
+    markdown = { { "prettierd", "prettier" } },
+    css = { { "prettierd", "prettier" } },
+    scss = { { "prettierd", "prettier" } },
+  },
   formatters = {
     lua = {
       command = "./../../../../Local/nvim-data/mason/bin/stylua.cmd"
