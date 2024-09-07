@@ -4,10 +4,6 @@ local original_on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
-local lspconfig = require "lspconfig"
-
-local servers = { "lua_ls", "html", "cssls", "tsserver", "tailwindcss", "eslint", "pylsp", "prismals" }
-
 local function on_attach(client, bufnr)
   original_on_attach(client, bufnr)
 
@@ -19,13 +15,9 @@ local function on_attach(client, bufnr)
   del('n', '<leader>wr', opts "Remove workspace folder")
   del('n', '<leader>wl', opts "List workspace folders")
 end
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = on_attach,
-    on_init = on_init,
-    capabilities = capabilities,
-    -- TODO only for lua_ls
+
+local servers = {
+  lua_ls = {
     settings = {
       Lua = {
         diagnostics = {
@@ -43,26 +35,23 @@ for _, lsp in ipairs(servers) do
           preloadFileSize = 10000,
         },
       },
-    },
-  }
+    }
+  },
+  html = {},
+  cssls = {},
+  tsserver = {},
+  tailwindcss = {},
+  eslint = {},
+  pylsp = {},
+  prismals = {}
+}
+
+
+-- lsps with default config
+for name, opts in pairs(servers) do
+  opts.on_init = on_init
+  opts.on_attach = on_attach
+  opts.capabilities = capabilities
+
+  require("lspconfig")[name].setup(opts)
 end
-
--- -- typescript
--- lspconfig.tsserver.setup {
---   on_attach = on_attach,
---   on_init = on_init,
---   capabilities = capabilities,
--- }
-
--- lspconfig.tailwindcss.setup {
---   on_attach = on_attach,
---   on_init = on_init,
---   capabilities = capabilities,
--- }
-
--- lspconfig.eslint.setup {
---   on_attach = on_attach,
---   on_init = on_init,
---   capabilities = capabilities,
--- }
---

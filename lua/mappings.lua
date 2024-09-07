@@ -5,8 +5,10 @@ require "nvchad.mappings"
 local map = vim.keymap.set
 local del = vim.keymap.del
 
-local function toggle_floating_term()
-  require("nvchad.term").toggle { pos = "float", id = "floatTerm" }
+local function toggle_floating_term(type)
+  return function()
+    require("nvchad.term").toggle { pos = type, id = type }
+  end
 end
 
 -- Define a wrapper function that calls move_buf with an argument
@@ -15,14 +17,6 @@ local function move_buf(arg)
     require("nvchad.tabufline").move_buf(arg)
   end
 end
-
--- Use the wrapper function in the key mapping
-vim.api.nvim_set_keymap(
-  'n',
-  '<leader><leader>k',
-  [[:lua require('nvchad.tabufline').move_buf(1)<CR>]],
-  { noremap = true, silent = true }
-)
 
 -- Delete Keymaps
 del('n', '<leader>ma')
@@ -33,6 +27,7 @@ del('n', '<leader>ds')
 del('n', '<leader>wk')
 del('n', '<leader>wK')
 del('n', '<leader>b')
+del('n', '<leader>pt')
 
 -- Smart Splits
 del('n', '<C-h>')
@@ -57,6 +52,10 @@ map('n', '<leader>d', '"_d', { noremap = true })
 map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
 
+-- Telescope Bindings
+map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "telescope live grep" })
+
+
 -- Git Integrations
 map('n', '<leader>gs', ':!git add -A<CR><CR>', { noremap = true, desc = "Stage All Files" })
 map('n', '<leader>gc', ':Git commit<CR>', { noremap = true, desc = "Commit Changes" })
@@ -69,9 +68,7 @@ map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
 
 -- Terminal Navigations
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-map({ 'n', 't' }, '<C-t>', toggle_floating_term, { desc = "Terminal Toggle Floating term" })
-map({ 'n', 't' }, '<leader>tf', toggle_floating_term, { desc = "Terminal Toggle Floating term" })
-
+map({ 'n', 't' }, '<C-t>', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
 
 map("n", "<leader>j", "<cmd>bprev<CR>")
 map("n", "<leader>k", "<cmd>bnext<CR>")
