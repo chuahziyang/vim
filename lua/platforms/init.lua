@@ -1,7 +1,7 @@
 if vim.g.vscode then
-  require("settings")
+  require("platforms.vscode")
 elseif vim.g.started_by_firenvim == true then
-  require("firenvim_config").setup()
+  require("platforms.firenvim_config")
 else
   -- ordinary Neovim
 end
