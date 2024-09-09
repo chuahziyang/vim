@@ -2,7 +2,8 @@ vim.g.firenvim_config = {
   localSettings = {
     ["."] = {
       takeover = "never",
-      cmdline = "neovim"
+      cmdline = "neovim",
+      filename = '/tmp/{hostname}.{extension}'
     }
   }
 }
