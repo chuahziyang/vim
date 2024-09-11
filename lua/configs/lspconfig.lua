@@ -43,7 +43,8 @@ local servers = {
   tailwindcss = {},
   eslint = {},
   pylsp = {},
-  prismals = {}
+  prismals = {},
+  clangd = {},
 }
 
 
