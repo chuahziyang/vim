@@ -42,7 +42,20 @@ local servers = {
   tsserver = {},
   tailwindcss = {},
   eslint = {},
-  pylsp = {},
+  pylsp = {
+    settings = {
+      pylsp = {
+        plugins = {
+          pycodestyle = {
+            enabled = false
+          },
+          -- pylint = {
+          --   enabled = false
+          -- }
+        }
+      }
+    }
+  },
   prismals = {},
   clangd = {},
 }
