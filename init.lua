@@ -40,6 +40,5 @@ vim.schedule(function()
 end)
 
 
-require("platforms")
 
--- vim.cmd([[colorscheme aura-dark]])
+require("platforms")

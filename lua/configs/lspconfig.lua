@@ -10,6 +10,13 @@ local function on_attach(client, bufnr)
   local function opts(desc)
     return { buffer = bufnr, desc = "LSP " .. desc }
   end
+  vim.diagnostic.config({
+    virtual_text = {
+      severity = {
+        min = vim.diagnostic.severity.ERROR
+      }
+    }
+  })
 
   del('n', '<leader>wa', opts "Add workspace folder")
   del('n', '<leader>wr', opts "Remove workspace folder")
