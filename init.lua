@@ -41,3 +41,5 @@ end)
 
 
 require("platforms")
+
+-- vim.cmd([[colorscheme aura-dark]])
