@@ -1,7 +1,6 @@
 {
   "LuaSnip": { "branch": "master", "commit": "7ad2eaeaca56d6ed63acacbfc114b99f1f67b982" },
   "NvChad": { "branch": "v2.5", "commit": "5189f3e32c87478632bb471817db1df13f8b16d1" },
-  "aura-theme": { "branch": "feat/neovim-port", "commit": "6c0b2244c57b9b8588c1f9ea9f56ef1d41d82e87" },
   "auto-session": { "branch": "main", "commit": "a5750c62b33dc4daf641345004398847ff84d7e9" },
   "base46": { "branch": "v2.5", "commit": "ce47400d51707c0370f32b6e0e889f69e642aed4" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
@@ -39,6 +38,7 @@
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
   "telescope.nvim": { "branch": "master", "commit": "5972437de807c3bc101565175da66a1aa4f8707a" },
   "ui": { "branch": "v2.5", "commit": "23a5a720d1a7389175eca2b2bdd9d5d17b45071e" },
+  "vim-flog": { "branch": "master", "commit": "4669c4060b97f9f9ce700f6f663f0e3dbed25fe1" },
   "vim-fugitive": { "branch": "master", "commit": "0444df68cd1cdabc7453d6bd84099458327e5513" },
   "which-key.nvim": { "branch": "main", "commit": "6c1584eb76b55629702716995cca4ae2798a9cca" }
 }
