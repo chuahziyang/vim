@@ -54,7 +54,8 @@ map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
 
 -- Telescope Bindings
-map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "telescope live grep" })
+map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "Telescope live grep" })
+map("n", "<leader><leader>f", "<cmd>Telescope<CR>", { desc = "Telescope" })
 
 
 -- Git Integrations

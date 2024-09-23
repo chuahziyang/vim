@@ -48,8 +48,8 @@ local servers = {
   },
   html = {},
   cssls = {},
-  tsserver = {},
   tailwindcss = {},
+  ts_ls = {},
   eslint = {},
   pylsp = {
     settings = {
