@@ -3,7 +3,7 @@ vim.g.firenvim_config = {
     ["."] = {
       takeover = "never",
       cmdline = "neovim",
-      filename = '/tmp/{hostname}.{extension}'
+      -- filename = '/tmp/{hostname}.{extension}'
     }
   }
 }
