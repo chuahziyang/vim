@@ -29,6 +29,8 @@ del('n', '<leader>wK')
 del('n', '<leader>b')
 del('n', '<leader>pt')
 del('n', '<leader>rn')
+del('n', '<leader>ff')
+del('n', '<leader>fm')
 
 -- Smart Splits
 del('n', '<C-h>')
@@ -52,10 +54,14 @@ map('n', '<leader>p', '"0p', { noremap = true })
 map('n', '<leader>d', '"_d', { noremap = true })
 map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
+map({ 'i' }, ';', '<Esc>', { noremap = true })
+map({ 'i' }, '<Esc>', ';', { noremap = true })
 
 -- Telescope Bindings
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "Telescope live grep" })
 map("n", "<leader><leader>f", "<cmd>Telescope<CR>", { desc = "Telescope" })
+map("n", "<leader>ff", "<cmd>Telescope smart_open<CR>", { desc = "Telescope" })
+map("n", "<leader>fr", "<cmd>Telescope command_history<CR>", { desc = "Telescope" })
 
 
 -- Git Integrations
