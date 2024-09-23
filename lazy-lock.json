@@ -34,6 +34,7 @@
   "smart-splits.nvim": { "branch": "master", "commit": "3737faa521d12a0c77d0d28bb15ad903a9e8cfe0" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "substitute.nvim": { "branch": "main", "commit": "97f49d16f8eea7967d41db4f657dd63af53eeba1" },
+  "supermaven-nvim": { "branch": "main", "commit": "3da044bbc23a354e9cb17602ed2d5ca8528173bb" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "cf48d4dfce44e0b9a2e19a008d6ec6ea6f01a83b" },
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
   "telescope.nvim": { "branch": "master", "commit": "b324469959908c1c7434eb65d80e87895e6828f7" },
