@@ -3,20 +3,20 @@ return {
   version = "*", -- Use for stability; omit to use `main` branch for the latest features
   event = "VeryLazy",
   config = function()
-      require("nvim-surround").setup({
-          keymaps = {
-              insert = "<C-g>o",
-              insert_line = "<C-g>O",
-              normal = "yo",
-              normal_cur = "yoo",
-              normal_line = "yO",
-              normal_cur_line = "yOO",
-              visual = "O",
-              visual_line = "gO",
-              delete = "do",
-              change = "co",
-              change_line = "cO",
-          },
-      })
+    require("nvim-surround").setup({
+      keymaps = {
+        insert = "<C-g>r",
+        insert_line = "<C-g>R",
+        normal = "yr",
+        normal_cur = "yrr",
+        normal_line = "yR",
+        normal_cur_line = "yRR",
+        visual = "R",
+        visual_line = "gR",
+        delete = "dr",
+        change = "cr",
+        change_line = "cS",
+      }
+    })
   end,
-  }
+}

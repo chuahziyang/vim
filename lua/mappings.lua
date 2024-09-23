@@ -28,6 +28,7 @@ del('n', '<leader>wk')
 del('n', '<leader>wK')
 del('n', '<leader>b')
 del('n', '<leader>pt')
+del('n', '<leader>rn')
 
 -- Smart Splits
 del('n', '<C-h>')
@@ -74,3 +75,7 @@ map("n", "<leader>j", "<cmd>bprev<CR>")
 map("n", "<leader>k", "<cmd>bnext<CR>")
 map("n", "<leader><leader>j", move_buf(-1))
 map("n", "<leader><leader>k", move_buf(1))
+
+map("n", "<leader>lr", function()
+  require "nvchad.lsp.renamer" ()
+end)

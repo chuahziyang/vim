@@ -1,5 +1,5 @@
 return {
- {
+  {
     "lewis6991/gitsigns.nvim",
     config = function()
       -- Load the default settings
@@ -12,7 +12,11 @@ return {
           virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
           delay = 400,
           ignore_whitespace = false,
-        }
+        },
+        on_attach = function(bufnr)
+          default_options.on_attach(bufnr)
+          -- vim.keymap.del("n", "<leader>rh", { bufnr = bufnr, desc = "LSP Reset Hunk" })
+        end
       }
       -- Merge default and custom options
       local final_options = vim.tbl_deep_extend("force", default_options, custom_options)

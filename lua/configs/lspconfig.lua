@@ -21,6 +21,8 @@ local function on_attach(client, bufnr)
   del('n', '<leader>wa', opts "Add workspace folder")
   del('n', '<leader>wr', opts "Remove workspace folder")
   del('n', '<leader>wl', opts "List workspace folders")
+  del('n', '<leader>sh', opts "LSP Show signature help")
+  del('n', '<leader>ra', opts "NvRenamer")
 end
 
 local servers = {
