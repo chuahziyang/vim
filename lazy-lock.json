@@ -30,7 +30,7 @@
   "nvim-web-devicons": { "branch": "master", "commit": "26220156aafb198b2de6a4cf80c1b120a3768da0" },
   "obsidian.nvim": { "branch": "main", "commit": "ae1f76a75c7ce36866e1d9342a8f6f5b9c2caf9b" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
-  "smart-open.nvim": { "branch": "0.2.x", "commit": "87626ee8748b9bba22093adec7bb58c63e7214f0" },
+  "smart-open.nvim": { "branch": "main", "commit": "698442805d3f4a577abfd7141cd5278306fe04ed" },
   "smart-splits.nvim": { "branch": "master", "commit": "3737faa521d12a0c77d0d28bb15ad903a9e8cfe0" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "substitute.nvim": { "branch": "main", "commit": "97f49d16f8eea7967d41db4f657dd63af53eeba1" },
@@ -38,7 +38,7 @@
   "telescope-fzy-native.nvim": { "branch": "master", "commit": "282f069504515eec762ab6d6c89903377252bf5b" },
   "telescope.nvim": { "branch": "master", "commit": "b324469959908c1c7434eb65d80e87895e6828f7" },
   "ui": { "branch": "v2.5", "commit": "62f6ede07573a04e7c1a76ec48e7ce19b43d39f3" },
-  "vim-flog": { "branch": "master", "commit": "4669c4060b97f9f9ce700f6f663f0e3dbed25fe1" },
+  "vim-flog": { "branch": "master", "commit": "d58ee1812bf18ae58a6c6459389c4f6fdb070e70" },
   "vim-fugitive": { "branch": "master", "commit": "d4877e54cef67f5af4f950935b1ade19ed6b7370" },
   "which-key.nvim": { "branch": "main", "commit": "fb070344402cfc662299d9914f5546d840a22126" }
 }
