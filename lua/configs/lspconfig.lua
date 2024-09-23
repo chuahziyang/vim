@@ -65,6 +65,7 @@ local servers = {
       }
     }
   },
+  -- pylyzer = {},
   prismals = {},
   clangd = {},
 }
