@@ -5,16 +5,16 @@ return {
   config = function()
     require("nvim-surround").setup({
       keymaps = {
-        insert = "<C-g>r",
-        insert_line = "<C-g>R",
-        normal = "yr",
-        normal_cur = "yrr",
-        normal_line = "yR",
-        normal_cur_line = "yRR",
-        visual = "R",
-        visual_line = "gR",
-        delete = "dr",
-        change = "cr",
+        insert = "<C-g>s",
+        insert_line = "<C-g>s",
+        normal = "ys",
+        normal_cur = "yss",
+        normal_line = "yS",
+        normal_cur_line = "ySS",
+        visual = "S",
+        visual_line = "gS",
+        delete = "ds",
+        change = "cs",
         change_line = "cS",
       }
     })
