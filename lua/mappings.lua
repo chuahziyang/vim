@@ -61,12 +61,14 @@ map({ 'i' }, '<Esc>', ';', { noremap = true })
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "Telescope live grep" })
 map("n", "<leader><leader>f", "<cmd>Telescope<CR>", { desc = "Telescope" })
 map("n", "<leader>ff", "<cmd>Telescope smart_open<CR>", { desc = "Telescope" })
-map("n", "<leader>fr", "<cmd>Telescope command_history<CR>", { desc = "Telescope" })
+map("n", "<leader>fr", "<cmd>Telescope command_history<CR>", { desc = "Telescope command history" })
+map("n", "<leader>fy", "<cmd>Telescope neoclip<CR>", { desc = "Telescope neoclip" })
 
 
 -- Git Integrations
 map('n', '<leader>gs', ':!git add -A<CR><CR>', { noremap = true, desc = "Stage All Files" })
 map('n', '<leader>gc', ':Git commit<CR>', { noremap = true, desc = "Commit Changes" })
+map('n', '<leader>gp', ':Git push<CR>', { noremap = true, desc = "Push Changes" })
 
 
 -- Buffer Navigations
