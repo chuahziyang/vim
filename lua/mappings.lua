@@ -88,3 +88,15 @@ map("n", "<leader><leader>k", move_buf(1))
 map("n", "<leader>lr", function()
   require "nvchad.lsp.renamer" ()
 end)
+
+map("n", "<leader>o", function()
+  require("menu").open("default")
+end, {})
+
+-- mouse users + nvimtree users!
+map("n", "<RightMouse>", function()
+  vim.cmd.exec '"normal! \\<RightMouse>"'
+
+  local options = vim.bo.ft == "NvimTree" and "nvimtree" or "default"
+  require("menu").open(options, { mouse = true })
+end, {})
