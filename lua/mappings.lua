@@ -57,6 +57,7 @@ map('n', '<C-u>', '<C-u>zz', { noremap = true })
 map({ 'i' }, ';', '<Esc>', { noremap = true })
 map({ 'i' }, '<Esc>', ';', { noremap = true })
 
+
 -- Telescope Bindings
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "Telescope live grep" })
 map("n", "<leader><leader>f", "<cmd>Telescope<CR>", { desc = "Telescope" })
@@ -79,6 +80,7 @@ map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
 -- Terminal Navigations
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 map({ 'n', 't' }, '<C-t>', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
+map({ 'n', 't' }, ';t', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
 
 map("n", "<leader>j", "<cmd>bprev<CR>")
 map("n", "<leader>k", "<cmd>bnext<CR>")
