@@ -4,16 +4,8 @@
 ---@type ChadrcConfig
 local M = {}
 
-M.ui = {
+M.base46 {
   theme = "aura-dark",
-
-  -- hl_override = {
-  -- 	Comment = { italic = true },
-  -- 	["@comment"] = { italic = true },
-  -- },
-}
-M.lsp = {
-  signature = false
 }
 -- M.plugins = "plugins"
 

@@ -57,6 +57,9 @@ map('n', '<C-u>', '<C-u>zz', { noremap = true })
 map({ 'i' }, ';', '<Esc>', { noremap = true })
 map({ 'i' }, '<Esc>', ';', { noremap = true })
 
+-- Open In
+map("n", "<leader><leader>e", "<cmd>term start .<CR>", { desc = "Open in Explorer" })
+map("n", "<leader><leader>v", "<cmd>term code .<CR>", { desc = "Open in VSCode" })
 
 -- Telescope Bindings
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "Telescope live grep" })
@@ -70,12 +73,24 @@ map("n", "<leader>fy", "<cmd>Telescope neoclip<CR>", { desc = "Telescope neoclip
 map('n', '<leader>gs', ':!git add -A<CR><CR>', { noremap = true, desc = "Stage All Files" })
 map('n', '<leader>gc', ':Git commit<CR>', { noremap = true, desc = "Commit Changes" })
 map('n', '<leader>gp', ':Git push<CR>', { noremap = true, desc = "Push Changes" })
+map('n', '<leader>gl', ':Git pull<CR>', { noremap = true, desc = "Pull Changes" })
+map('n', '<leader>gi', ':Floggit<CR>', { noremap = true, desc = "Git Status" })
+map('n', '<leader>gg', ':Flog<CR>', { noremap = true, desc = "Git Graph" })
 
 
 -- Buffer Navigations
 map('n', '<leader>w', ':w<CR>', { noremap = true })
-map('n', '<leader>q', ':x<CR>', { noremap = true })
+map("n", "<leader>q", function()
+  require("nvchad.tabufline").close_buffer(false)
+end, {})
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
+map("n", "<leader>bw", function()
+  require("nvchad.tabufline").closeAllBufs(false)
+end, {})
+map("n", "<leader>ba", function()
+  require("nvchad.tabufline").closeAllBufs(true)
+end, {})
+
 
 -- Terminal Navigations
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
