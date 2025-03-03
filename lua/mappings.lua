@@ -80,9 +80,10 @@ map('n', '<leader>gg', ':Flog<CR>', { noremap = true, desc = "Git Graph" })
 
 -- Buffer Navigations
 map('n', '<leader>w', ':w<CR>', { noremap = true })
-map("n", "<leader>q", function()
-  require("nvchad.tabufline").close_buffer(false)
-end, {})
+map('n', '<leader>q', ':x<CR>', { noremap = true })
+-- map("n", "<leader>q", function()
+--   require("nvchad.tabufline").close_buffer(false)
+-- end, {})
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
 map("n", "<leader>bw", function()
   require("nvchad.tabufline").closeAllBufs(false)
