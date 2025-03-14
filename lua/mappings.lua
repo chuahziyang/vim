@@ -76,14 +76,15 @@ map('n', '<leader>gp', ':Git push<CR>', { noremap = true, desc = "Push Changes" 
 map('n', '<leader>gl', ':Git pull<CR>', { noremap = true, desc = "Pull Changes" })
 map('n', '<leader>gi', ':Floggit<CR>', { noremap = true, desc = "Git Status" })
 map('n', '<leader>gg', ':Flog<CR>', { noremap = true, desc = "Git Graph" })
+map('n', '<leader>gb', ':Telescope git_branches<CR>', { noremap = true, desc = "Git Branches" })
 
 
 -- Buffer Navigations
 map('n', '<leader>w', ':w<CR>', { noremap = true })
 map('n', '<leader>q', ':x<CR>', { noremap = true })
--- map("n", "<leader>q", function()
---   require("nvchad.tabufline").close_buffer(false)
--- end, {})
+map("n", "<leader>x", function()
+  require("nvchad.tabufline").close_buffer(false)
+end, {})
 map('n', '<leader>e', '<cmd>NvimTreeToggle<CR>', { noremap = true })
 map("n", "<leader>bw", function()
   require("nvchad.tabufline").closeAllBufs(false)
