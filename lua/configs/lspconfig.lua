@@ -68,6 +68,7 @@ local servers = {
   -- pylyzer = {},
   prismals = {},
   clangd = {},
+  jdtls = {},
 }
 
 

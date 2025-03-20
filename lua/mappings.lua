@@ -11,6 +11,14 @@ local function toggle_floating_term(type)
   end
 end
 
+local function new_term()
+  return function()
+    require("nvchad.term").new { pos = "float" }
+  end
+end
+
+
+
 -- Define a wrapper function that calls move_buf with an argument
 local function move_buf(arg)
   return function()
@@ -72,7 +80,7 @@ map("n", "<leader>fy", "<cmd>Telescope neoclip<CR>", { desc = "Telescope neoclip
 -- Git Integrations
 map('n', '<leader>gs', ':!git add -A<CR><CR>', { noremap = true, desc = "Stage All Files" })
 map('n', '<leader>gc', ':Git commit<CR>', { noremap = true, desc = "Commit Changes" })
-map('n', '<leader>gp', ':Git push<CR>', { noremap = true, desc = "Push Changes" })
+map('n', '<leader>gp', ':Git push --all<CR>', { noremap = true, desc = "Push Changes" })
 map('n', '<leader>gl', ':Git pull<CR>', { noremap = true, desc = "Pull Changes" })
 map('n', '<leader>gi', ':Floggit<CR>', { noremap = true, desc = "Git Status" })
 map('n', '<leader>gg', ':Flog<CR>', { noremap = true, desc = "Git Graph" })
@@ -96,8 +104,11 @@ end, {})
 
 -- Terminal Navigations
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-map({ 'n', 't' }, '<C-t>', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
 map({ 'n', 't' }, ';t', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
+map({ 'n' }, ';n', new_term(), { desc = "Disposable Term" })
+map({ 't' }, ';n', function()
+  require("nvchad.tabufline").close_buffer(false)
+end, { desc = "Close Disposable Term" })
 
 map("n", "<leader>j", "<cmd>bprev<CR>")
 map("n", "<leader>k", "<cmd>bnext<CR>")
