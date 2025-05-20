@@ -69,6 +69,7 @@ local servers = {
   prismals = {},
   clangd = {},
   jdtls = {},
+  rust_analyzer = {},
 }
 
 
