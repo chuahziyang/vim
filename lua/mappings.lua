@@ -72,9 +72,17 @@ map("n", "<leader><leader>v", "<cmd>term code .<CR>", { desc = "Open in VSCode" 
 -- Telescope Bindings
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "Telescope live grep" })
 map("n", "<leader><leader>f", "<cmd>Telescope<CR>", { desc = "Telescope" })
-map("n", "<leader>ff", "<cmd>Telescope smart_open<CR>", { desc = "Telescope" })
+map("n", "<leader>ff", function ()
+  require("telescope").extensions.smart_open.smart_open { cwd_only = true}
+end, { noremap = true, silent = true })
+map("n", "<leader>fa", function ()
+  require("telescope").extensions.smart_open.smart_open { cwd_only = false}
+end, { noremap = true, silent = true })
+-- ("n", "<leader>ff", "<cmd>Telescope smart_open<CR>", { desc = "Telescope" })
 map("n", "<leader>fr", "<cmd>Telescope command_history<CR>", { desc = "Telescope command history" })
 map("n", "<leader>fy", "<cmd>Telescope neoclip<CR>", { desc = "Telescope neoclip" })
+map("n", "<leader>fs", "<cmd>Telescope session-lens<CR>", { desc = "Telescope neoclip" })
+
 
 
 -- Git Integrations
