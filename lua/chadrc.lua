@@ -2,7 +2,7 @@
 -- https://github.com/NvChad/NvChad/blob/v2.5/lua/nvconfig.lua
 
 ---@type ChadrcConfig
-   local M = {}
+local M = {}
 
 M.base46 = {
   theme = "aura-dark",

@@ -1,5 +1,6 @@
 -- EXAMPLE
 local del = vim.keymap.del;
+local map = vim.keymap.set;
 local original_on_attach = require("nvchad.configs.lspconfig").on_attach
 local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
@@ -21,8 +22,8 @@ local function on_attach(client, bufnr)
   del('n', '<leader>wa', opts "Add workspace folder")
   del('n', '<leader>wr', opts "Remove workspace folder")
   del('n', '<leader>wl', opts "List workspace folders")
-  -- del('n', '<leader>sh', opts "LSP Show signature help")
-  del('n', '<leader>ra', opts "NvRenamer")
+  del('n', '<leader>sh', opts "LSP Show signature help")
+  del('n', '<leader>ra', opts "Nvrenamer")
 end
 
 local servers = {

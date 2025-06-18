@@ -62,8 +62,6 @@ map('n', '<leader>p', '"0p', { noremap = true })
 map('n', '<leader>d', '"_d', { noremap = true })
 map('n', '<C-d>', '<C-d>zz', { noremap = true })
 map('n', '<C-u>', '<C-u>zz', { noremap = true })
-map({ 'i' }, ';', '<Esc>', { noremap = true })
-map({ 'i' }, '<Esc>', ';', { noremap = true })
 
 -- Open In
 map("n", "<leader><leader>e", "<cmd>term start .<CR>", { desc = "Open in Explorer" })
@@ -72,11 +70,11 @@ map("n", "<leader><leader>v", "<cmd>term code .<CR>", { desc = "Open in VSCode" 
 -- Telescope Bindings
 map("n", "<leader>ft", "<cmd>Telescope terms<CR>", { desc = "Telescope live grep" })
 map("n", "<leader><leader>f", "<cmd>Telescope<CR>", { desc = "Telescope" })
-map("n", "<leader>ff", function ()
-  require("telescope").extensions.smart_open.smart_open { cwd_only = true}
+map("n", "<leader>ff", function()
+  require("telescope").extensions.smart_open.smart_open { cwd_only = true }
 end, { noremap = true, silent = true })
-map("n", "<leader>fa", function ()
-  require("telescope").extensions.smart_open.smart_open { cwd_only = false}
+map("n", "<leader>fa", function()
+  require("telescope").extensions.smart_open.smart_open { cwd_only = false }
 end, { noremap = true, silent = true })
 -- ("n", "<leader>ff", "<cmd>Telescope smart_open<CR>", { desc = "Telescope" })
 map("n", "<leader>fr", "<cmd>Telescope command_history<CR>", { desc = "Telescope command history" })
@@ -112,9 +110,9 @@ end, {})
 
 -- Terminal Navigations
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
-map({ 'n', 't' }, ';t', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
-map({ 'n' }, ';n', new_term(), { desc = "Disposable Term" })
-map({ 't' }, ';n', function()
+map({ 'n', 't' }, '<Esc>t', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
+map({ 'n' }, '<Esc>n', new_term(), { desc = "Disposable Term" })
+map({ 't' }, '<Esc>n', function()
   require("nvchad.tabufline").close_buffer(false)
 end, { desc = "Close Disposable Term" })
 
