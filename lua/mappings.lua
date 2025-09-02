@@ -18,7 +18,6 @@ local function new_term()
 end
 
 
-
 -- Define a wrapper function that calls move_buf with an argument
 local function move_buf(arg)
   return function()
@@ -112,7 +111,7 @@ end, {})
 map('t', '<Esc>', '<C-\\><C-n>', { noremap = true })
 map({ 'n', 't' }, '<Esc>t', toggle_floating_term("float"), { desc = "Terminal Toggle Floating term" })
 map({ 'n' }, '<Esc>n', new_term(), { desc = "Disposable Term" })
-map({ 't' }, '<Esc>n', function()
+map({ 't' }, ';n', function()
   require("nvchad.tabufline").close_buffer(false)
 end, { desc = "Close Disposable Term" })
 
