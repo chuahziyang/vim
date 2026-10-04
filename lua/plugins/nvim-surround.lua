@@ -2,21 +2,8 @@ return {
   "kylechui/nvim-surround",
   version = "*", -- Use for stability; omit to use `main` branch for the latest features
   event = "VeryLazy",
-  config = function()
-    require("nvim-surround").setup({
-      keymaps = {
-        insert = "<C-g>s",
-        insert_line = "<C-g>s",
-        normal = "ys",
-        normal_cur = "yss",
-        normal_line = "yS",
-        normal_cur_line = "ySS",
-        visual = "S",
-        visual_line = "gS",
-        delete = "ds",
-        change = "cs",
-        change_line = "cS",
-      }
-    })
-  end,
+  -- v4 removed the `keymaps` field from setup(): loading the plugin installs
+  -- the default mappings itself. To rebind, set the relevant
+  -- vim.g.nvim_surround_no_*_mappings flag and map <Plug>(nvim-surround-*).
+  -- See `:h nvim-surround.migrating.v3_to_v4` and `:h nvim-surround.keymaps`.
 }
