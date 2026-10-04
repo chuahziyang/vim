@@ -1,85 +1,74 @@
--- EXAMPLE
-local del = vim.keymap.del;
-local map = vim.keymap.set;
-local original_on_attach = require("nvchad.configs.lspconfig").on_attach
-local on_init = require("nvchad.configs.lspconfig").on_init
-local capabilities = require("nvchad.configs.lspconfig").capabilities
+-- NvChad's defaults() already applies capabilities + on_init through
+-- vim.lsp.config("*") and installs its LSP keymaps on LspAttach, so this file
+-- only carries per-server settings, the maps we want gone, and the enable list.
 
-local function on_attach(client, bufnr)
-  original_on_attach(client, bufnr)
-
-  local function opts(desc)
-    return { buffer = bufnr, desc = "LSP " .. desc }
-  end
-  vim.diagnostic.config({
-    virtual_text = {
-      severity = {
-        min = vim.diagnostic.severity.ERROR
-      }
-    }
-  })
-
-  del('n', '<leader>wa', opts "Add workspace folder")
-  del('n', '<leader>wr', opts "Remove workspace folder")
-  del('n', '<leader>wl', opts "List workspace folders")
-  del('n', '<leader>sh', opts "LSP Show signature help")
-  del('n', '<leader>ra', opts "Nvrenamer")
-end
-
-local servers = {
-  lua_ls = {
-    settings = {
-      Lua = {
-        diagnostics = {
-          globals = { "vim" },
-        },
-        workspace = {
-          library = {
-            vim.fn.expand "$VIMRUNTIME/lua",
-            vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
-            vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
-            vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
-            "${3rd}/luv/library",
-          },
-          maxPreload = 100000,
-          preloadFileSize = 10000,
-        },
-      },
-    }
+vim.diagnostic.config {
+  virtual_text = {
+    severity = {
+      min = vim.diagnostic.severity.ERROR,
+    },
   },
-  html = {},
-  cssls = {},
-  tailwindcss = {},
-  ts_ls = {},
-  eslint = {},
-  pylsp = {
-    settings = {
-      pylsp = {
-        plugins = {
-          pycodestyle = {
-            enabled = false
-          },
-          -- pylint = {
-          --   enabled = false
-          -- }
-        }
-      }
-    }
-  },
-  sqlls = {},
-  -- pylyzer = {},
-  prismals = {},
-  clangd = {},
-  jdtls = {},
-  rust_analyzer = {},
 }
 
+-- drop the NvChad LSP maps we don't use (tolerant: not all of them exist)
+vim.api.nvim_create_autocmd("LspAttach", {
+  callback = function(args)
+    local unwanted = { "<leader>wa", "<leader>wr", "<leader>wl", "<leader>sh", "<leader>ra" }
 
--- lsps with default config
-for name, opts in pairs(servers) do
-  opts.on_init = on_init
-  opts.on_attach = on_attach
-  opts.capabilities = capabilities
+    for _, lhs in ipairs(unwanted) do
+      pcall(vim.keymap.del, "n", lhs, { buffer = args.buf })
+    end
+  end,
+})
 
-  require("lspconfig")[name].setup(opts)
-end
+vim.lsp.config("lua_ls", {
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { "vim" },
+      },
+      workspace = {
+        library = {
+          vim.fn.expand "$VIMRUNTIME/lua",
+          vim.fn.expand "$VIMRUNTIME/lua/vim/lsp",
+          vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types",
+          vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy",
+          "${3rd}/luv/library",
+        },
+        maxPreload = 100000,
+        preloadFileSize = 10000,
+      },
+    },
+  },
+})
+
+vim.lsp.config("pylsp", {
+  settings = {
+    pylsp = {
+      plugins = {
+        pycodestyle = {
+          enabled = false,
+        },
+        -- pylint = {
+        --   enabled = false
+        -- }
+      },
+    },
+  },
+})
+
+vim.lsp.enable {
+  "lua_ls",
+  "html",
+  "cssls",
+  "tailwindcss",
+  "ts_ls",
+  "eslint",
+  "pylsp",
+  "sqlls",
+  -- "pylyzer",
+  "prismals",
+  "clangd",
+  "jdtls",
+  "rust_analyzer",
+}
